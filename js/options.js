@@ -49,9 +49,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // For adding new set of fields
 
   function addFieldSet() {
-  	console.log('Add a New Fieldset');
   	var fieldsetNode = fieldset.cloneNode(true);
-  	fieldContainer.appendChild(fieldsetNode);
+  	var fieldsetChildren = fieldsetNode.childNodes;
+    fieldsetChildren.forEach(function(node){
+      node.value = '';
+    });
+    fieldContainer.appendChild(fieldsetNode);
   };
 
   save.addEventListener('click',saveFieldSets);
