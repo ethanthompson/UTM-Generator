@@ -20,7 +20,7 @@ html, body {
   background-color: rgba(30,43,50,0.06);
 }
 h1 {
-  font-size: 2em;
+  font-size: 2.4em;
   margin-top: 0;
   padding-top: 0;
 }
@@ -77,12 +77,77 @@ button.button--outline {
 .field-set {
   margin-bottom: 20px;
 }
+.field-set:after {
+  content: '';
+  display: block;
+  clear: both;
+}
 .field-set .field {
-  width: calc(50% - 10px);
+  display: inline-block;
+  width: calc(50% - 50px);
+  margin: 0;
+  float: left;
 }
 .field-set .field:first-of-type {
   margin-right: 20px;
 }
+
+.field-set .field-set__option {
+  display: inline-block;
+  width: 20px;
+  height: 16px;
+  background: white;
+  border: solid 1px lightgrey;
+  margin: 10px 10px 10px 10px;
+  float: left;
+  position: relative;
+  cursor: pointer;
+}
+
+.field-set .field-set__option--remove:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 10px;
+  height: 2px;
+  background: red;
+}
+
+.field-set .field-set__option--add:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 10px;
+  height: 2px;
+  background: green;
+}
+
+.field-labels {
+  margin-top: 25px;
+}
+
+.field-labels::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.field-labels .field-labels__label {
+  float: left;
+  width: calc(50% - 50px);
+  padding: 1rem 0;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.field-labels .field-labels__label:first-of-type {
+  margin-right: 20px;
+}
+
 .results {
   margin-top: 10px;
 }

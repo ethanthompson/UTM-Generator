@@ -1,13 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var save = document.getElementById('save');
-  var newFieldset = document.getElementById('new');
+
+  var buttonSave = document.getElementById('save');
+  var buttonNew = document.getElementById('new');
   var fieldContainer = document.querySelector('.field-container');
   var fieldset = document.querySelector('.field-set');
   var attributes = ['data-source','data-medium','data-campaign'];
 
+  function removeFieldSet() {
+    this.parentNode.remove();
+  };
+
   function renderFields(json) {
     var array = json.fields;
     array.forEach(function(key){
+      var fieldsetOptions = document.createElement('span');
+      fieldsetOptions.className = 'field-set__option field-set__option--remove';
       var newFieldSet = document.createElement('div');
       newFieldSet.className = 'field-set';
       for (var i = 0; i < key.length; i++) {
@@ -16,12 +23,17 @@ document.addEventListener('DOMContentLoaded', function () {
         field.className = 'field';
         newFieldSet.appendChild(field);
       };
+      newFieldSet.appendChild(fieldsetOptions);
       fieldContainer.insertBefore(newFieldSet, fieldContainer.firstChild);
     });
   };
 
   chrome.storage.sync.get('fields', function(result){
     renderFields(result);
+    var buttonRemove = document.querySelectorAll('.field-set__option--remove');
+    buttonRemove.forEach(function(element){
+      element.addEventListener('click',removeFieldSet);
+    });
   });
 
   // For Saving New Fields
@@ -57,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fieldContainer.appendChild(fieldsetNode);
   };
 
-  save.addEventListener('click',saveFieldSets);
-  newFieldset.addEventListener('click',addFieldSet);
+  buttonSave.addEventListener('click',saveFieldSets);
+  buttonNew.addEventListener('click',addFieldSet);
 
 });
