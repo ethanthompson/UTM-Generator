@@ -4,7 +4,7 @@ A simple Chrome extension that helps you generate UTM parameters.
 
 ## How to Install
 
-  1. Close [this repo](https://github.com/ethanthompson/UTM-Generator/) or download a zip
+  1. Clone [this repo](https://github.com/ethanthompson/UTM-Generator/) or download a zip
   2. Go to [Chrome Extensions page](chrome://extensions/)
   3. Check the box in the upper right corner labeled "Developer Mode"
   4. Click the "Load Unpacked Extension..." button
